@@ -32,8 +32,8 @@ Depending on the number of hebbian layers preceding the `(Classifier)`, the perf
 
 |     #layers     |     1 |     2 |     3 |     4 |      5 |
 |:---------------:|------:|------:|------:|------:|-------:|
-|  Accuracy (val) | 69.20 | 67.13 | 64.91 | 59.83 |  46.25 |
-| Accuracy (test) | 67.06 | 65.22 | 63.08 | 58.86 |  45.45 |
+|  Accuracy (val) | 66.97 | 65.44 | 63.87 | 58.79 |  45.91 |
+| Accuracy (test) | 66.21 | 65.22 | 63.08 | 58.86 |  45.45 |
 |       $p$       |     2 |     8 |     8 |     8 |      8 |
 |       $k$       |     9 |     3 |     5 |     7 |      2 |
 |     $\Delta$    |   .08 |   .34 |   .25 |  .235 |   .335 |
@@ -47,10 +47,10 @@ Note that performance is slightly better than the results obtained in [2], here 
 
 |     #layers     |     1 |     2 |     3 |     4 |      5 |
 |:---------------:|------:|------:|------:|------:|-------:|
-|  Accuracy (this) | 67.06 | 65.22 | 63.08 | 58.86 |  45.45 |
+|  Accuracy (this) | 66.21 | 65.22 | 63.08 | 58.86 |  45.45 |
 | Accuracy ([2]) | 63.92 | 63.81 | 58.28 | 52.99 |  41.78 |
 
-A full report on the hyperparameter optimization is available on [wandb](https://wandb.ai/francesco-manzali/bioarchitectures-cifar10/reports/Bio-Architectures--Vmlldzo5NTE2NzQ).
+**Note**: optimization was done using `experiments/03_bioarchitecture_cifar10.py`. A full report on the trials is available on [wandb](https://wandb.ai/francesco-manzali/bioarchitectures-cifar10/reports/Bio-Architectures--Vmlldzo5NTE2NzQ).
 
 ## Sources
 [1] Krotov, Hopfield, "Unsupervised learning by competing hidden units", 2019
