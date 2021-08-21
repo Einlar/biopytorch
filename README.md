@@ -21,7 +21,7 @@ See the example notebook in `notebooks` for more details.
 
 ## Benchmark 
 
-Hyperparameters ($p$, $k$, $\Delta$ - for their meaning, see the `slides`, or the docstrings) are optimized with respect to the validation accuracy of classification on the CIFAR-10 dataset, using the `Optuna` library. 
+Hyperparameters (p, k, Delta - for their meaning, see the `slides`, or the docstrings) are optimized with respect to the validation accuracy of classification on the CIFAR-10 dataset, using the `Optuna` library. 
 
 Specifically, the architecture (taken from [2]) is as follows:
 <img src="architecture.png">
@@ -34,13 +34,13 @@ Depending on the number of hebbian layers preceding the `(Classifier)`, the perf
 |:---------------:|------:|------:|------:|------:|-------:|
 |  Accuracy (val) | 66.97 | 65.44 | 63.87 | 58.79 |  45.91 |
 | Accuracy (test) | 66.21 | 65.22 | 63.08 | 58.86 |  45.45 |
-|       $p$       |     2 |     8 |     8 |     8 |      8 |
-|       $k$       |     9 |     3 |     5 |     7 |      2 |
-|     $\Delta$    |   .08 |   .34 |   .25 |  .235 |   .335 |
+|       p       |     2 |     8 |     8 |     8 |      8 |
+|       k       |     9 |     3 |     5 |     7 |      2 |
+|     Delta    |   .08 |   .34 |   .25 |  .235 |   .335 |
 |     Dropout     |    .2 |   .25 |   .05 |    .1 |     .1 |
 |      Params     |  195k |  302k |  387k |  804k | 1.475M |
 
-$p$, $k$ and $\Delta$ are the same for all the `BioConv2d` layers.
+p, k and Delta are the same for all the `BioConv2d` layers.
 When the full architecture is trained, different hyperparameters are used for the BioLinear layer. However, for the best run, they are exactly equal to the ones already used for the previous `BioConv2d`, which are reported in the table.
 
 Note that performance is slightly better than the results obtained in [2], here reported for reference:
