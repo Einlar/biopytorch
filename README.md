@@ -20,9 +20,42 @@ See the example notebook in `notebooks` for more details.
 - `notebooks`: examples
 
 ## Benchmark 
-TODO: Add table with the results on CIFAR-10
 
+Hyperparameters ($p$, $k$, $\Delta$ - for their meaning, see the `slides`, or the docstrings) are optimized with respect to the validation accuracy of classification on the CIFAR-10 dataset, using the `Optuna` library. 
 
+Specifically, the architecture (taken from [2]) is as follows:
+<img src="architecture.png">
+
+The `(Classifier)` segment is inserted in different positions - after `(1)`, `(2)`, ... - such that the change in performance given by deeper layers may be measured.
+
+Depending on the number of hebbian layers preceding the `(Classifier)`, the performance obtained with the best hyperparameters found is as follows:
+
+|     #layers     |     1 |     2 |     3 |     4 |      5 |
+|:---------------:|------:|------:|------:|------:|-------:|
+|  Accuracy (val) | 69.20 | 67.13 | 64.91 | 59.83 |  46.25 |
+| Accuracy (test) | 67.06 | 65.22 | 63.08 | 58.86 |  45.45 |
+|       $p$       |     2 |     8 |     8 |     8 |      8 |
+|       $k$       |     9 |     3 |     5 |     7 |      2 |
+|     $\Delta$    |   .08 |   .34 |   .25 |  .235 |   .335 |
+|     Dropout     |    .2 |   .25 |   .05 |    .1 |     .1 |
+|      Params     |  195k |  302k |  387k |  804k | 1.475M |
+
+$p$, $k$ and $\Delta$ are the same for all the `BioConv2d` layers.
+When the full architecture is trained, different hyperparameters are used for the BioLinear layer. However, for the best run, they are exactly equal to the ones already used for the previous `BioConv2d`, which are reported in the table.
+
+Note that performance is slightly better than the results obtained in [2], here reported for reference:
+
+|     #layers     |     1 |     2 |     3 |     4 |      5 |
+|:---------------:|------:|------:|------:|------:|-------:|
+|  Accuracy (this) | 67.06 | 65.22 | 63.08 | 58.86 |  45.45 |
+| Accuracy ([2]) | 63.92 | 63.81 | 58.28 | 52.99 |  41.78 |
+
+A full report on the hyperparameter optimization is available on [wandb](https://wandb.ai/francesco-manzali/bioarchitectures-cifar10/reports/Bio-Architectures--Vmlldzo5NTE2NzQ).
+
+## Sources
+[1] Krotov, Hopfield, "Unsupervised learning by competing hidden units", 2019
+
+[2] Amato et al., "Hebbian Learning Meets Deep Convolutional Neural Networks", 2019
 
 
 
